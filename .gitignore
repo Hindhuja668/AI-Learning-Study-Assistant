@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+chroma_db/
+progress.json
+course_material/
+*.pyc
