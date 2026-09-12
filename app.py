@@ -1,5 +1,6 @@
+import os
 import streamlit as st
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 
 from rag import add_pdf, ask_question
 from quiz import generate_quiz
@@ -106,6 +107,10 @@ if uploaded_file is not None:
     if st.button(
         "📖 Analyze Course Material"
     ):
+
+        # Create the folder automatically.
+        # This fixes FileNotFoundError on Streamlit Cloud.
+        os.makedirs("course_material", exist_ok=True)
 
         file_path = (
             f"course_material/{uploaded_file.name}"
